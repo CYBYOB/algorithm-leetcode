@@ -35,9 +35,9 @@ QQ群（二维码如下图）： 933919972
 微信群（二维码如下图）。
 ```
 
-![QQ群 - 933919972 ](https://files.mdnice.com/user/6999/05a9bbb9-1200-4541-8988-69da85260d0a.png)
+![QQ群 - 933919972 ](https://files.mdnice.com/user/6999/df221a65-1f22-40f5-ba1b-ad19e6c95bde.png)
 
-![VX群 - 个人VX: c13227839870 ](https://files.mdnice.com/user/6999/1a012f87-8290-4172-bef5-ada25d259043.png)
+![VX群 - 个人VX: c13227839870 ](https://files.mdnice.com/user/6999/7c8c9f91-b757-45f5-8147-f2fbedf53d3b.png)
 
 ### 3 信息补充
 ```
