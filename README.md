@@ -11,41 +11,12 @@
 ```
 
 ### 2 项目亮点
-```
-1）项目的根目录下的 README.md 文件，
-可以帮您快速查阅每1道题的来源、难度、所有的题解方案等。
-
-2）而每个题解（即 index.md 文件）中，
-还将附带题目描述、所有的题解方案的思维导图（ .xmind 文件）、思路和技巧等。
-
-3）每种题解方案都有详细的注释，
-通过“数字步骤”将抽象的算法逻辑、
-清晰和有层次的展示于您的面前。
-可以说是，
-开箱即用~
-
-4）所有的题解方案都是经过作者1人之手，
-故代码风格及其统一。
-一旦阅读达到一定量后，
-后续将大大提升您的阅读速度 —— “正所谓、量变引起质变”。
-
-5）本人每周仍在不断的更新 —— 保证每周都有新的题目、题解方案刺激着您的神经 和 刷题欲望。
-欢迎对算法感兴趣的同学加入我们的社群。
-QQ群（二维码如下图）： 933919972
-微信群（二维码如下图）。
-```
-
-![QQ群 - 933919972 ](https://files.mdnice.com/user/6999/df221a65-1f22-40f5-ba1b-ad19e6c95bde.png)
-
-![VX群 - 个人VX: c13227839870 ](https://files.mdnice.com/user/6999/7c8c9f91-b757-45f5-8147-f2fbedf53d3b.png)
-
-### 3 信息补充
-```
-所有的题目均优先在 微信公众号“码农三少” 中更新。
-GitHub上面基本是攒够 5题，
-然后一次性提交。
-```
-
+| 对比项 | 他人 | 自己 |
+| --- | --- | --- |
+| 项目参与人数 | 可能多个人，代码风格不一 | 均自己所写，代码风格及其统一，阅读几篇后、将提升数十倍的阅读效率 |
+| 代码的注释量 | 只在前面说明思路，代码里的注释可能较少（无法做到代码和注释的“高度内聚”） | 代码里的注释量较合理 && 只要在关键的代码块、行进行注释 && 注释用词叫统一且收敛（如 核心处理、边界、优化、注意等。） |
+| 每个题的题解数量 | 一般只会展示最优解 | 因存在一定数量的同学想不到或看不懂的最优解，故每个题自己都会展示所有的题解及其思路、技巧等。现每个题都会有 **2-5** 个题解。 |
+| 规划&&更新 | 暂未调研 | 仍不断更新中，1）目标是现按顺序更新300（一般来说刷个100-200题就比较有感觉了）题，接着500、800题等。2）目前只有文字版的题解，后续有时间了将出版视频讲解版 |
 
 # 二 题目总览
 |  题目名称（点击可跳转至LeetCode）  |  题目难度（简单、中等、困难）  |  解法（点击可跳转至 相应的题解 .md ）  |
@@ -69,3 +40,42 @@ GitHub上面基本是攒够 5题，
 | [18. 四数之和（4Sum）](https://leetcode-cn.com/problems/4sum/ "Title") | 中等（Medium） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/18.%20四数之和（4Sum）/index.md "Title") |
 | [19. 删除链表的倒数第 N 个结点（Remove Nth Node From End of List）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/ "Title") | 中等（Medium） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/19.%20删除链表的倒数第%20N%20个结点（Remove%20Nth%20Node%20From%20End%20of%20List）/index.md "Title") |
 | [20. 有效的括号（Valid Parentheses）](https://leetcode-cn.com/problems/valid-parentheses/ "Title") | 简单（Easy） | [共 2 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/20.%20有效的括号（Valid%20Parentheses）/index.md "Title") |
+
+# 三 更多
+### 1 相关社群
+```
+欢迎对算法感兴趣的同学加入我们的社群。
+QQ群（二维码如下图）： 933919972
+微信群（二维码如下图，个人VX: c13227839870 ，可帮忙拉入交流群）。
+```
+
+![QQ群 - 933919972 ](https://files.mdnice.com/user/6999/df221a65-1f22-40f5-ba1b-ad19e6c95bde.png)
+
+![VX群 - 个人VX: c13227839870 ](https://files.mdnice.com/user/6999/7c8c9f91-b757-45f5-8147-f2fbedf53d3b.png)
+
+### 2 读书笔记 & 书籍推荐
+```
+以下是个人整理的一些笔记和书籍（永久有效链接: ** https://pan.baidu.com/s/1SPc3umO6cZlBtoPylSaHzw  密码: eqee ** ，若失效的话可私信本人（或向 “码农三少” 公众号发送 “资料” ）以进行最新资料的获取）：
+```
+![个人技术笔记(350+算法题解、前端重点面经汇总、图解HTTP等)](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511535179-image.png)
+![理财书籍pdf](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511225028-image.png)
+![技术书籍pdf](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511414339-image.png)
+![个人基金](https://files.mdnice.com/user/6999/2d50d4a1-094e-4d01-b141-0f94b3793108.png)
+
+### 3 作者标签
+```
+1）“伪全栈工程师，主攻前端，偶尔写点后端”。
+
+2）2019年的微信小程序应用开发赛-全国三等奖；
+2019CODA比赛- 前 17/211 强 且 荣获“优秀团队”称号 等。
+
+3）“半自媒体人”，在校期间、个人公众号（IT三少。新自媒体（公众号）号：码农三少）在半年内实现了0到5.8K+的粉丝增长等。
+```
+![自媒体-粉丝数据（半年内实现了0到5.8K+的粉丝增长）](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-8-28/1630134068710-%E7%B2%89%E4%B8%9D-%E6%95%B0%E6%8D%AE.jpg)
+
+### 4 信息补充
+```
+所有的题目均优先在 微信公众号 “码农三少” 中更新。
+GitHub上面基本是攒够 5题，
+然后一次性提交。
+```
