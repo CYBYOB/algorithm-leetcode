@@ -92,25 +92,49 @@ var convert = function(s, numRows) {
 };
 ```
 
-# 四 内推&更多
-### 1 内推
-本人是百度的1名工程师，欢迎校招、社招同学向本人投递简历。
-本人可内推公司（也可帮忙内推 阿里、腾讯、字节、美团、滴滴、京东等~）的所有岗位，本人邮箱如下：
+# 四 更多
+### 1 刷题进度
+```
+1）LeetCode：307 / 2390 。
 
-1）chenyuanbao@baidu.com
+2）《剑指offer》：66 / 66 。
 
-2）yuanbao.chen@qq.com
+3）相关学习资料与笔记汇总： 
+https://github.com/CYBYOB/algorithm-leetcode/tree/master/资料%26笔记 。
 
+4）注：所有题目均有 2-5种 左右的解法，后续还将不断更新题目 & 题解。
+敬请期待~
+也欢迎大家进群一起 学习、交流、刷题&拿高薪~
+```
 
-部分的JD如下：
+![刷题进度 - LeetCode：307 / 2390 、《剑指offer》：66 / 66 ](https://files.mdnice.com/user/6999/09201cae-28f0-4062-8a07-03d027f4fc0c.png)
 
-1）![内推-百度-基础架构部-前端](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-8-7/1628324503124-image.png)
+### 2 GitHub - LeetCode项目仓库
+```
+0）本项目地址： 
+https://github.com/CYBYOB/algorithm-leetcode 。
+目标、愿景：
+让每个人都能拥有一定的算法能力、以应对面试中（会举一反三的同学还可以将其融入自己的肌肉和血液，甚至能够赋能于公司的业务和技术）的算法。
 
-2）![内推-百度-基础架构部-后端](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-8-7/1628325243459-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E9%83%A8.jpg)
+本人每周仍在不断的更新 —— 保证每周都有新的题目、题解方案刺激着您的神经 和 刷题欲望。
+欢迎对算法感兴趣的同学加入我们的社群。
+QQ群： 933919972 ；
+作者QQ： 1520112971 ；
+作者VX： c13227839870（可拉您进群、一起学习与交流~） 。
+```
 
+![GitHub：algorithm-leetcode - 项目亮点](https://files.mdnice.com/user/6999/772fafdd-76ab-4e0c-a1f9-34e65ac63fad.png)
 
-### 2 更多
-以下是个人整理的一些笔记和书籍（永久有效链接: **https://pan.baidu.com/s/1SPc3umO6cZlBtoPylSaHzw  密码: eqee** ，若失效的话可私信本人以进行最新资料的获取）：
-![个人技术笔记(350+算法题解、前端重点面经汇总、图解HTTP等).png](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511535179-image.png)
-![理财书籍pdf.png](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511225028-image.png)
-![技术书籍pdf.png](https://cdn.jsdelivr.net/gh/CYBYOB/img/2021-4-4/1617511414339-image.png)
+![GitHub：algorithm-leetcode - 题目总览](https://files.mdnice.com/user/6999/7b92db4c-d5d3-4558-8003-284d3e24b86b.png)
+
+### 3 作者标签
+```
+1）“BAT里1名小小的伪全栈工程师，主攻前端，偶尔写点后端”。
+
+2）2019年的微信小程序应用开发赛 - 全国三等奖；
+2019CODA比赛 - 前 17/211 强 且 荣获“优秀团队”称号 等。
+
+3）“半自媒体人”，
+在校期间、个人公众号（IT三少。新自媒体（公众号）号： 码农三少 ）
+在半年内实现了0到5.8K+的粉丝增长等。
+```
