@@ -41,6 +41,11 @@
 | [18. 四数之和（4Sum）](https://leetcode-cn.com/problems/4sum/ "Title") | 中等（Medium） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/18.%20四数之和（4Sum）/index.md "Title") |
 | [19. 删除链表的倒数第 N 个结点（Remove Nth Node From End of List）](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/ "Title") | 中等（Medium） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/19.%20删除链表的倒数第%20N%20个结点（Remove%20Nth%20Node%20From%20End%20of%20List）/index.md "Title") |
 | [20. 有效的括号（Valid Parentheses）](https://leetcode-cn.com/problems/valid-parentheses/ "Title") | 简单（Easy） | [共 2 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/20.%20有效的括号（Valid%20Parentheses）/index.md "Title") |
+| [26. 删除有序数组中的重复项（Remove Duplicates from Sorted Array）](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/ "Title") | 简单（Easy） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/26.%20删除有序数组中的重复项（Remove%20Duplicates%20from%20Sorted%20Array）/index.md "Title") |
+| [27. 移除元素（Remove Element）](https://leetcode-cn.com/problems/remove-element/ "Title") | 简单（Easy） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/27.%20移除元素（Remove%20Element）/index.md "Title") |
+| [28. 实现 strStr()（Implement strStr()）](https://leetcode-cn.com/problems/implement-strstr/ "Title") | 简单（Easy） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/28.%20实现%20strStr()（Implement%20strStr()）/index.md "Title") |
+| [29. 两数相除（Divide Two Integers）](https://leetcode-cn.com/problems/divide-two-integers/ "Title") | 中等（Medium） | [共 4 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/29.%20两数相除（Divide%20Two%20Integers）/index.md "Title") |
+| [30. 串联所有单词的子串（Substring with Concatenation of All Words）](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/ "Title") | 困难（Hard） | [共 3 种解法](https://github.com/CYBYOB/algorithm-leetcode/blob/master/30.%20串联所有单词的子串（Substring%20with%20Concatenation%20of%20All%20Words）/index.md "Title") |
 
 # 三 更多
 ### 1 相关社群
