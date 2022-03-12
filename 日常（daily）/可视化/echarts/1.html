@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./echarts.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 800px; height: 800px;"></div>
+</body>
+<script>
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    
+    let data = [120, 200, 150, 80, 70, 110, 130];
+    setInterval(() => {
+        // let data = [120, 200, 150, 80, 70, 110, 130];
+        data[0]++;
+        option = {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+            data: data,
+            type: 'bar',
+            showBackground: true,
+            backgroundStyle: {
+                color: 'rgba(180, 180, 180, 0.2)'
+            }
+            }
+        ]
+        };
+
+        option && myChart.setOption(option);
+        // debugger
+    }, 1000);
+</script>
+</html>
