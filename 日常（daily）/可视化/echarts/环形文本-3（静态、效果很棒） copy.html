@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态的环形文本（参考： https://blog.csdn.net/qq_33769914/article/details/120240457 ）</title>
+    <style>
+        .emblem span {
+            /* width: 10px;
+            height: 10px; */
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .emblem {
+            /* position: absolute;
+            left: 0;
+            right: 0;
+            top: 30.5px; */
+            margin: 0 auto;
+            /* 圆形的直径 */
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            color: red;
+            text-align: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="emblem"></div>
+    </div>
+</body>
+
+<script>
+    var emblemText = new Array(12).fill(0);
+    circleText('.emblem');
+
+    function circleText(el, str) {
+        let element = document.querySelector(el);
+        emblemText.forEach((v, i) => {
+            let span = document.createElement('span');
+            span.innerHTML = `<pre>${emblemText[i]}</pre>`
+            let deg = (i + 1) * 30 - 15;
+            span.style.transform = `rotateZ(${deg}deg)`
+            element.appendChild(span);
+        })
+    }
+</script>
+
+</html>

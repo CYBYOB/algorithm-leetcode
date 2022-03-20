@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            left: 200px;
+            /* 核心代码：此时的圆心是 (0 + 上面的left值, 200px + 上面的top值) */
+            transform-origin: 0 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container"></div>
+</body>
+<script>
+    const textList = new Array(12).fill(0).map((v, i) => i),
+        l = textList.length,
+        container = document.getElementById('container');
+        
+    textList.forEach((v, i) => {
+        const deg = (360 / l) * i;
+        let span = document.createElement('span');
+        span.innerHTML = `${v}`;
+        span.style.transform = `rotateZ(${deg}deg)`;
+        container.appendChild(span);
+    });
+</script>
+</html>

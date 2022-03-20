@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .emblem span {
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            font-size: 12px;
+            transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+        }
+
+        .emblem {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 30.5px;
+            margin: 0 auto;
+            width: 240px;
+            /* //圆形的直径 */
+            height: 240px;
+            border-radius: 50%;
+            color: #7D970B;
+            /*animation: spinZ 20s linear infinite;*/
+            text-align: center;
+            overflow: hidden;
+        }
+    </style>
+    <script src="./pi.js"></script>
+</head>
+
+<body>
+    <pre>参考：
+        1）https://blog.csdn.net/qq_33769914/article/details/120240457
+    </pre>
+    <div class="container">
+        <div class="emblem"></div>
+    </div>
+</body>
+
+<script>
+    var emblemText = PI.slice(1, 13).split('');
+    circleText('.emblem');
+
+    function circleText(el, str) {
+        let element = document.querySelector(el);
+        emblemText.forEach((v, i) => {
+            let span = document.createElement('span');
+            span.innerHTML = `<pre>${emblemText[i]}</pre>`
+            let deg = (i + 1) * 30 - 15;
+            span.style.transform = `rotateZ(${deg}deg)`
+            element.appendChild(span);
+        })
+    }
+</script>
+
+</html>

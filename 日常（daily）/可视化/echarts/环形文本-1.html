@@ -1,0 +1,60 @@
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>环形文本</title>
+</head>
+<style>
+    .pie {
+        width: 580px;
+        height: 118px;
+        margin: 0 auto;
+    }
+</style>
+
+<body>
+    <div class="pie" style="background: #f44;">
+        <canvas id="canvas" width="960" height="960" style="width:320px;height:320px;"></canvas>
+    </div>
+</body>
+<script>
+    var title = "苏哲苏成长报告";//自定义文本内容
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    if(canvas.getContext) {
+        var circle = {
+            x: 480,
+            y: 2000,
+            radius: 1900
+        }
+        drawCircularText(circle,title, rads(260), rads(286));
+    }
+    //转换弧度
+    function rads(x) {
+        return Math.PI * x / 180;
+    }
+        function drawCircularText(s, string, startAngle, endAngle) {
+        var radius = s.radius,
+            angleDecrement = (startAngle - endAngle) / (string.length - 1),
+            angle = parseFloat(startAngle),
+            index = 0,
+            character;
+        ctx.save();
+        ctx.fillStyle = 'black';
+        ctx.font = '160px 微软雅黑';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'middle';
+        while(index < string.length) {
+            character = string.charAt(index);
+            ctx.save();
+            ctx.beginPath();
+            ctx.translate(s.x + Math.cos(angle) * radius,
+                s.y + Math.sin(angle) * radius);
+            ctx.rotate(Math.PI / 2 + angle);
+            ctx.fillText(character, 0, 0);
+            angle -= angleDecrement;
+            index++;
+            ctx.restore();
+        }
+        ctx.restore();
+    }
+</script>
