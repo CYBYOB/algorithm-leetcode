@@ -17,10 +17,9 @@
         }
         span {
             position: absolute;
-            /* top: 0;
             left: 200px;
-            核心代码：此时的圆心是 (0 + 上面的left值, 200px + 上面的top值)
-            transform-origin: 0 200px; */
+            transform-origin: 0 200px;
+            text-align: center;
         }
     </style>
 </head>
@@ -28,17 +27,43 @@
     <div id="container" class="container"></div>
 </body>
 <script>
-    // 长度为36：分3层，每层12个
-    const textList = new Array(36).fill(0).map((v, i) => i),
+    // 长度为60：分5层，每层12个
+    const textList = new Array(60).fill(0).map((v, i) => i),
         l = textList.length,
         container = document.getElementById('container');
-        
+    let _left = 200,
+        _top = 0,
+        _x = 0,
+        _y = 200;
+
+    // 核心：越内层，top值增加、transformOrigin的ye方向值减少
     textList.forEach((v, i) => {
-        const deg = (360 / l) * i;
+        // 1）计算相关的值
+        const curLevel = parseInt(i / 12),
+            curTop = _top + (curLevel * 30),
+            curY = _y - (curLevel * 30);
+            console.log(curTop)
+        const deg = (360 / 12) * i;
+
+        // 2）生成相应的dom元素并设置样式
         let span = document.createElement('span');
         span.innerHTML = `${v}`;
-        span.style.transform = `rotateZ(${deg}deg)`;
+        cssObj = {
+            'transform': `rotateZ(${deg}deg)`,
+            'top': `${curTop}px`,
+            'transformOrigin': `0 ${curY}px`
+        };
+        setStyle(span, cssObj);
+
+        // 3）dom挂载
         container.appendChild(span);
     });
+
+    // 批量设置 dom 元素上的样式
+    function setStyle(dom, cssObj){
+        for(const attr in cssObj) {
+            dom.style[attr] = cssObj[attr];	
+        }
+    }
 </script>
 </html>
