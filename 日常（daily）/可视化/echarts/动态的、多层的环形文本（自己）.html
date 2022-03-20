@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        span {
+            position: absolute;
+            left: 200px;
+            transform-origin: 0 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container"></div>
+</body>
+<script>
+    const rawList = new Array(160).fill(0).map((v, i) => i);
+    let curStartIndex = 0;
+
+    setInterval(() => {
+        // 长度为60：分5层，每层12个
+        const textList = rawList.slice(curStartIndex, curStartIndex + 60),
+            l = textList.length,
+            container = document.getElementById('container');
+        let _left = 200,
+            _top = 0,
+            _x = 0,
+            _y = 200;
+
+        // 前置操作
+        container.innerHTML = '';
+
+        // 核心：越内层，top值增加、transformOrigin的ye方向值减少
+        const fragment = document.createDocumentFragment();
+        textList.forEach((v, i) => {
+            // 1）计算相关的值
+            const curLevel = parseInt(i / 12),
+                curTop = _top + (curLevel * 40),
+                curY = _y - (curLevel * 40),
+                deg = (360 / 12) * i,
+                curFontSize = 35 - (curLevel * 5);
+
+            // 2）生成相应的dom元素并设置样式
+            let span = document.createElement('span');
+            span.innerHTML = `${v}`;
+            cssObj = {
+                'fontSize': `${curFontSize}px`,
+                'transform': `rotateZ(${deg}deg)`,
+                'top': `${curTop}px`,
+                'transformOrigin': `0 ${curY}px`,
+            };
+            setStyle(span, cssObj);
+
+            // 3）fragment挂载（提高性能）
+            fragment.appendChild(span);
+        });
+
+        // 4）dom挂载
+        container.append(fragment);
+        curStartIndex++;
+    }, 1000);
+
+    // 批量设置 dom 元素上的样式
+    function setStyle(dom, cssObj) {
+        for (const attr in cssObj) {
+            dom.style[attr] = cssObj[attr];
+        }
+    }
+</script>
+</html>
