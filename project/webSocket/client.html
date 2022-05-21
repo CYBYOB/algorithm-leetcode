@@ -1,0 +1,33 @@
+<body>
+    <button onclick="send()">
+        向服务器发送消息
+    </button>
+    <script>
+        if ('WebSocket' in window) {
+            const ws = new WebSocket('ws://localhost:3000', 'conn');
+            let pingTimer = null
+            ws.addEventListener('message', async ({data}) => {
+                const json = JSON.parse(data)
+                // 我们通过和服务端商量的使用 type 的方式处理不同的事件。
+                if (json.type === 'connected') {
+                    console.log('[webSocket] connected.')
+                    pingTimer = setInterval(() => ws.send('心跳'), 30000)
+                }
+                // 定时对服务端发送消息告诉服务端客户端还 “活着”
+                if (json.type === 'console') {
+                    console.log(json.data)
+                }
+            })
+    
+            ws.addEventListener('close', async () => {
+                if (pingTimer) clearInterval(pingTimer);
+                console.info('[webSocket] disconnected.');
+            });
+    
+            function send() {
+                ws.send(`客户端向服务端发送消息 时间：${new Date().toLocaleString()}`)
+            }
+        }
+    </script>
+</body>
+    
