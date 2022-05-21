@@ -67,23 +67,22 @@ try:
         res = requests.get(url, headers)
 
         statusCode = res.status_code
-        content = res.text
-        print(content)
+        content = res.json()
 
-        # if statusCode == 200 and content :
-        #     print(content)
-        #     myDict = {
-        #         "id": id + str(row_count),
-        #         "tag": tag,
-        #         "value": value + content,
-        #         "copyCount": 0,
-        #         "author": author
-        #     }
-        #     w.writerow(myDict)
-        #     row_count += 1
+        if statusCode == 200 and content['code'] == '200' and content['text'] :
+            print(content)
+            myDict = {
+                "id": id + str(row_count),
+                "tag": tag,
+                "value": value + content['text'],
+                "copyCount": 0,
+                "author": author
+            }
+            w.writerow(myDict)
+            row_count += 1
 
-        # if (count % sleepOneSecondCount):
-        #     sleep(1)
+        if (count % sleepOneSecondCount):
+            sleep(1)
 except:
     pass
 
