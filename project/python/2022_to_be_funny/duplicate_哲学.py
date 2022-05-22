@@ -13,9 +13,9 @@ def get_file_row_count(filePath):
 # 数据源
 import source.网易云 as source
 # 共有的 id、tag、value、copyCount、author 值或前缀
-id = "C"
-tag = "舔狗日记"
-value = "舔狗日记/"
+id = "F"
+tag = "哲学"
+value = "哲学/"
 
 copyCount = 0
 author = "网络"
@@ -26,7 +26,7 @@ sleepOneSecondCount = 5
 
 # print(os.path.dirname())
 # 文件名字
-savedFileName = "舔狗日记"
+savedFileName = "哲学"
 filePath = "/Users/mac/Documents/2021_my_media/project/algorithm-leetcode/project/python/2022_to_be_funny/csv/t_text_" + savedFileName + ".csv"
 
 myData = source.data
@@ -63,7 +63,7 @@ try:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 \
             (KHTML, like Gecko) Chrome/14.0.835.163 Safari/535.1'}
         
-        url = 'https://api.oddfar.com/yl/q.php?c=1006&encode=json'
+        url = 'https://api.oddfar.com/yl/q.php?c=2011&encode=json'
         res = requests.get(url, headers)
 
         statusCode = res.status_code
