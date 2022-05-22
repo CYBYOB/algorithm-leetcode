@@ -20,7 +20,7 @@ author = "网络"
 # 从网络爬的条目数
 crawlCount = 10000
 # 多少次，休息1秒
-sleepOneSecondCount = 50
+sleepOneSecondCount = 5
 
 # 文件名字
 savedFileName = "网易云"
