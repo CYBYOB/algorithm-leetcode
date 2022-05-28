@@ -13,7 +13,7 @@ with open(cleanFilePath, 'w', newline='')as cleanFile:
 
     # 遍历读取要去重的文件
     path = "/Users/mac/Documents/2021_my_media/project/algorithm-leetcode/project/python/2022_to_be_funny/csv/text"          
-    for root,dirs,files in os.walk(path):
+    for root, dirs, files in os.walk(path):
         for file in files:
             rawFilePath = os.path.join(root, file)
             # 过滤自身（写入的总文件）
