@@ -25,8 +25,8 @@ with open(cleanFilePath, 'w', newline='')as cleanFile:
     idStrPrefixIndex = 0
     for root, dirs, files in os.walk(path):
         for dir in dirs:
-            # 边界：有2个空目录，应该是 ./ 和 ../ ？
-            if len(dir) != 0:
+            # 边界：有2个空目录，应该是 ./ 和 ../ ？ 且 过滤特殊的文件夹（如 带有“备份” 字眼）
+            if len(dir) != 0 and '备份' not in dir:
                 curDir = os.path.join(root, dir)
                 # print(curDir)
 
