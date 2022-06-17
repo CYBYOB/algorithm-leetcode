@@ -3,10 +3,19 @@
     "version": "1.0.0",
     "main": "main.js",
     "license": "MIT",
+    "build": {
+        "appId": "your.id",
+        "mac": {
+            "category": "your.app.category.type"
+        }
+    },
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "app:dir": "electron-builder --dir",
+        "app:dist": "electron-builder"
     },
     "devDependencies": {
-        "electron": "^19.0.4"
+        "electron": "^19.0.4",
+        "electron-builder": "^23.0.3"
     }
 }
