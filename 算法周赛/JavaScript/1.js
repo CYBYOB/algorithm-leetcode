@@ -1,8 +1,39 @@
 // 牛客的输入、输出处理模板
 
-console.log(1111)
+let l =readline(),
 
-console.log(1)
+
+
+// // 19：54 - 
+// let preList = [],
+//     curLevel = 0;
+
+// while (curLevel < 9) {
+//     const tempList = readline().split(' ').map(v => parseInt(v));
+//     preList[curLevel] = tempList;
+//     curLevel++;
+// }
+
+// let preList = [
+//     [0, 9, 2, 4, 8, 1, 7, 6, 3],
+//     [4, 1, 3, 7, 6, 2, 9, 8, 5],
+//     [8, 6, 7, 3, 5, 9, 4, 1, 2],
+//     [6, 2, 4, 1, 9, 5, 3, 7, 8],
+//     [7, 5, 9, 8, 4, 3, 1, 2, 6],
+//     [1, 3, 8, 6, 2, 7, 5, 9, 4],
+//     [2, 7, 1, 5, 3, 8, 6, 4, 9],
+//     [3, 8, 6, 9, 1, 4, 2, 5, 7],
+//     [0, 4, 5, 2, 7, 6, 8, 3, 1],
+// ];
+
+
+// const isSolve = (list = []) => {
+//     let resFlag = true;
+    
+// }
+
+
+
 
 // const readline = () => 'A Famous Saying: Much Ado About Nothing (2012/8).';
 // let str = readline(),

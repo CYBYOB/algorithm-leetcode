@@ -1,12 +1,55 @@
 #include <algorithm>
 #include <vector>
 #include <iostream>
-#include <unordered_map> 
 using namespace std;
+
+// class Student{
+// public:
+//     char *m_name;
+//     int m_age;
+//     float m_score;
+// public:
+//     //声明构造函数
+//     Student(char *name, int age, float score);
+//     //声明普通成员函数
+//     // void show();
+// };
+
+// Student::Student(char *name, int age, float score){
+//     m_name = name;
+//     m_age = age;
+//     m_score = score;
+// }
+
+class Rect
+{
+public:
+    int ARC_ID;
+    char *DEP_CITY;
+    char *ARR_CITY;
+    float TIME;
+    int COST;
+    float SERVICE_LEVEL;
+
+public:
+    //声明构造函数
+    Rect(int ARC_ID, char *DEP_CITY, char *ARR_CITY, float TIME, int COST, float SERVICE_LEVEL);
+};
+//定义构造函数
+Rect::Rect(int ARC_ID, char *DEP_CITY, char *ARR_CITY, float TIME, int COST, float SERVICE_LEVEL)
+{
+    // id = id;
+    // ARC_ID = ARC_ID;
+    // DEP_CITY = DEP_CITY;
+    // ARR_CITY = ARR_CITY;
+    // TIME = TIME;
+    // COST = COST;
+    // SERVICE_LEVEL = SERVICE_LEVEL;
+}
 
 int main(int argc, char *argv[])
 {
-    string pre_list[1812][6] = {
+    string pre_list[3][6] = {
         {"1", "万州", "上海", "25.8", "1500", "0.133631367185479"},
 {"2", "万州", "南京", "21.9", "1350", "0.697106365347092"},
 {"3", "万州", "广州", "21.9", "1330", "0.671404542492791"},
@@ -1821,31 +1864,12 @@ int main(int argc, char *argv[])
 {"1812", "龙岩", "上海", "15.4", "1130", "0.684973836172167"},
     };
     
-    // 核心：算法处理
-    unordered_map<string, unordered_map<string, string> > map;
-    for (int i = 0; i < 1812; i++) {
-        string DEP_CITY = pre_list[i][1];
-        if(map.find(DEP_CITY) != map.end()) {
-            // map.
-            map.find(DEP_CITY).insert(pre_list[i][2], pre_list[i][0])
-        }
-        else {
-            unordered_map<string, string> t;
-            t.insert(pre_list[i][2], pre_list[i][0])
-            map.insert(DEP_CITY, t);
-        }
-    }
-    cout << map;
-    // dfs()
+    // 算法
 
-    string res_list[1812][6] = {
-        // {"1", "1229-8", "59.7", "4676", "0.072"},
+    string res_list[2][6] = {
+        {"1", "1229-8", "59.7", "4676", "0.072"},
         // ...
     };
     
     return 0;
-}
-
-int dfs() {
-
 }
