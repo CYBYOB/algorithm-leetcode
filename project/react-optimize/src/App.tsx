@@ -34,6 +34,7 @@ const Button = () => {
 
 const Show = () => {
     const num = useContext(numCtx);
+    console.log('Show render');
 
     return (
         <p>num：{num}</p>

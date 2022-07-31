@@ -1,38 +1,125 @@
 package 算法周赛;
 
+// java 
+// 0）导包：
+// import java.util.*;
+// import java.util.stream.Collectors;
+// import java.util.HashMap;
+
+// 1）读取：
+// Scanner sc = new Scanner(System.in);
+//     while(sc.hasNextLine()){
+//         String str = sc.nextLine();
+//     }
+// }
+
+// 2）输出：
+// System.out.println(count + "");
+
+
+// 题1
+import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.HashMap;
-// 题2
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        int N = Integer.parseInt(sc.nextLine());
-        HashMap<String, String> mapA = new HashMap<String, String>();
-        HashMap<String, String> mapB = new HashMap<String, String>();
-        
-        while (N > 0) {
-            String[] str = sc.nextLine().split(" ");
-            String a = str[0],
-                b = str[1];
+        int t = Integer.parseInt(sc.nextLine());
+        while (t > 0) {
+            String str= sc.nextLine();
+            int l = str.length();
+            boolean isPrint = false;
             
-            // 注：别抄错了（特别是 A、B、a、b 字符）~
-            mapA.put(a, b);
-            mapB.put(b, a);
+            for (int i = 0; i < l; i++) {
+                int valI = Integer.parseInt(str.charAt(i) + "");
+                if (0 <= valI && valI <= 9) {
+                    String s = str.charAt(i) + "";
+                    int j = i + 1;
+                    while (Character.isDigit(str.charAt(j))) {
+                        s += str.charAt(j);
+                        j++;
+                    }
+                    i = j;
 
-            N--;
-        }
+                    
+                    
+                    if (s.length() >= 3) {
+                        int start = Integer.parseInt(s.charAt(0) + "");
+                        boolean flag = true;
+                        for (int ii = 1; ii < s.length(); ii++) {
+                            if (start + 1 == Integer.parseInt(s.charAt(ii) + "")) {
+                                start++;
+                            }
+                            else {
+                                flag = false;
+                                break;
+                            }
+                        }
 
-        // 注：别抄错了（特别是 A、B、a、b 字符）~
-        for(String key : mapB.keySet()) {
-            if (mapA.get(key) == null) {
-                System.out.println(Integer.parseInt(key));
-                break;
+                        if (flag) {
+                            System.out.println("yes");
+                            isPrint = true;
+                            continue;
+                        }
+
+                        flag = true;
+                        start = Integer.parseInt(s.charAt(0) + "");
+                        for (int ii = 1; ii < s.length(); ii++) {
+                            if (start - 1 == Integer.parseInt(s.charAt(ii) + "")) {
+                                start--;
+                            }
+                            else {
+                                flag = false;
+                                break;
+                            }
+                        }
+
+                        if (flag) {
+                            System.out.println("yes");
+                            isPrint = true;
+                            continue;
+                        }
+                    }
+                }
             }
+            if (!isPrint) {
+                System.out.println("no");
+            }
+            t--;
         }
     }
 }
+ 
 
+// import java.io.IOException;
+// import java.util.*;
+
+// public class Main {
+//     public static void main(String[] args) throws IOException {
+//         Scanner sc = new Scanner(System.in);
+
+//     }
+// }
+
+
+
+// public class Main {
+//     public static void main(String[] args) throws IOException {
+//         Scanner sc = new Scanner(System.in);
+//         String[] arr = {"", ""};
+//         arr[0].sub
+//         while(sc.hasNextLine()){
+//             String str = sc.nextLine();
+//             int count = 0;
+//             for(int i = str.length() - 1; i >= 2 ; i-- ){
+//                 char ch = str.charAt(i);
+//                 int num = ch >= '0' && ch <='9' ?  ch - '0' : (ch - 'A' + 10);
+//                 count += num * Math.pow(16, str.length() - i - 1) ;  
+//             }
+//             System.out.println(count);
+//         }
+//     }
+// }
 
 
 // public class Main {
