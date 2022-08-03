@@ -1,13 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import ServiceTopology from './components/ServiceTopology';
+import {MyD3_1, MyD3_2, MyD3_3, MyD3_4} from './components/MyD3';
+import {MyG6_1, MyG6_2} from './components/MyG6';
 
 export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ServiceTopology()}>
-                </Route>
+                <Route path="/" element={ServiceTopology()}></Route>
+                <Route path="/MyD3_1" element={<MyD3_1 />}></Route>
+                <Route path="/MyD3_2" element={<MyD3_2 />}></Route>
+                <Route path="/MyD3_3" element={<MyD3_3 />}></Route>
+                <Route path="/MyD3_4" element={<MyD3_4 />}></Route>
+                <Route path="/MyG6_1" element={<MyG6_1 />}></Route>
+                <Route path="/MyG6_2" element={<MyG6_2 />}></Route>
             </Routes>
       </BrowserRouter>
     )
