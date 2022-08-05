@@ -4,34 +4,34 @@ import { useCallback, useEffect } from 'react';
 // import './index.css';
 import './index.less';
 
+// MyD3_4：x、y轴的绘制
 export function MyD3_4() {
     const drawChart = useCallback(() => {
         const svg = d3.selectAll("#MyD3_4").append('svg').attr("width", 1000).attr("height", 1000),
             l = 700,
             xAxisLabelList = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         // 设置y轴和x轴的范围
-        let yScale = d3.scaleLinear().range([0, l]).domain([0, l]),
+        let yScale = d3.scaleLinear().range([l, 0]).domain([0, l]),
             xScale = d3.scaleLinear().range([0, l]).domain([0, l]),
             //设置x和y轴的刻度方向及刻度数
             yAxis = d3.axisLeft(yScale).scale(yScale)
-                .ticks(7).tickFormat((domainValue, i) => i+''),
+                .ticks(7).tickFormat((domainValue, i) => i + ''),
             xAxis = d3.axisBottom(xScale).scale(xScale)
                 .ticks(7).tickFormat((domainValue, i) => xAxisLabelList[i]);
-        
-        yAxis(svg.append("g").attr("font-size","20").attr("transform", "translate(80,80)"))
-        xAxis(svg.append("g").attr("font-size","20").attr("transform", `translate(80,${l + 80})`)
-        )
-        
-        // svg.selectAll("g").selectAll('g').selectAll('text').attr('x', 30)
+
+        yAxis(svg.append("g").attr("font-size", "20").attr("transform", "translate(80,80)"))
+        xAxis(svg.append("g").attr("font-size", "20").attr("transform", `translate(80,${l + 80})`))
+
+        // x坐标的刻度居中
+        svg.selectChild('g:not(:nth-child(1))').selectAll('g').select('text').attr('x', 50);
     }, []);
 
     useEffect(() => {
-        // drawChart();
+        drawChart();
     }, [drawChart]);
 
     return (
         <div id="MyD3_4">
-            <div>sss</div>
         </div>
     )
 }
