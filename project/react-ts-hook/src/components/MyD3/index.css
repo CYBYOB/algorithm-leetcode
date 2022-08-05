@@ -1,9 +1,8 @@
 #MyD3_4 > div > font{
     color: red !important;
-}
-
-#MyD3_4 > div > font > font{
-    color: red !important;
+    /* > font{
+        color: red !important;
+    } */
 }
 #MyD3_4 > svg > g:nth-child(2) > g:nth-child(3) > text {
     color: red !important;

@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { useCallback, useEffect } from 'react';
 
-import './index.css';
+// import './index.css';
 import './index.less';
 
 export function MyD3_4() {
