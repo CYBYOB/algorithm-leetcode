@@ -3,6 +3,101 @@ import { useCallback, useEffect } from 'react';
 
 import './index.less';
 
+// MyD3_6：x、y轴 + 折线图（带小圆圈的，echarts的官方demo）
+// TODO：
+// 1）太多的魔法数字
+// 2）通过魔法数字去调整 线、圆 等的位置 —— “很不智能化”。
+export function MyD3_6() {
+    const drawAxis = useCallback((svg) => {
+        const l = 700,
+            xAxisLabelList = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+        // 设置y轴和x轴的范围
+        let yScale = d3.scaleLinear().range([l, 0]).domain([0, l]),
+            xScale = d3.scaleLinear().range([0, l]).domain([0, l]),
+            //设置x和y轴的刻度方向及刻度数
+            yAxis = d3.axisLeft(yScale).scale(yScale)
+                .ticks(7).tickFormat((_domainValue, i) => i * 50 + ''),
+            xAxis = d3.axisBottom(xScale).scale(xScale)
+                .ticks(7).tickFormat((_domainValue, i) => xAxisLabelList[i]);
+
+        yAxis(svg.append("g").attr("font-size", "20").attr("transform", "translate(80,80)"))
+        xAxis(svg.append("g").attr("font-size", "20").attr("transform", `translate(80,${l + 80})`))
+
+        // x坐标的刻度居中
+        svg.selectChild('g:not(:nth-child(1))').selectAll('g').select('text').attr('x', 50);
+    }, []);
+
+    const drawLine = useCallback((svg, data) => {
+        //d3.line是把数组的坐标生成一个path路径
+        const line = d3.line()
+            .x(function (d) {
+                return d3.scaleLinear()(d[0])
+            })
+            .y(function (d) {
+                return d3.scaleLinear()(d[1])
+            });
+
+        svg.selectAll('path.path')
+            .data(data)
+            .enter()
+            .append('path')
+            .attr('d', function (d: { x: number, y: number }[]) {
+                return line(d.map(v => [v.x * 100, 300 - v.y]))
+            })
+            .attr('stroke', 'rgba(84, 112, 198, 1)')
+            .attr('fill', 'none')
+            .style('stroke-width', '2px')
+            .attr('transform', `translate(130, 330)`)
+    }, []);
+
+    const drawCircle = useCallback((svg, data) => {
+        data.forEach((item: any) => {
+            svg.append('g')
+                .selectAll('.circle')
+                .data(item)
+                .enter()
+                .append('circle')
+                .attr('class', 'circle')
+                .attr('cx', function (d: { x: number; }) { return d3.scaleLinear()(d.x * 100) })
+                .attr('cy', function (d: { y: number; }) { return d3.scaleLinear()(300 - d.y) })
+                .attr('r', 4)
+                .attr('transform', `translate(130, 330)`)
+                .attr('fill', '#fff')
+                .attr('stroke', 'rgba(84, 112, 198, 1)')
+                .style('stroke-width', '1px');
+        });
+    }, []);
+
+    const drawChart = useCallback(() => {
+        const svg = d3.selectAll("#MyD3_6").append('svg').attr("width", 1000).attr("height", 1000),
+            data = [
+                [
+                    { x: 0, y: 150 },
+                    { x: 1, y: 230 },
+                    { x: 2, y: 224 },
+                    { x: 3, y: 218 },
+                    { x: 4, y: 135 },
+                    { x: 5, y: 147 },
+                    { x: 6, y: 260 },
+                ]
+            ];
+        drawAxis(svg);
+        drawLine(svg, data);
+        drawCircle(svg, data);
+    }, [drawAxis, drawLine, drawCircle]);
+
+    useEffect(() => {
+        drawChart();
+    }, [drawChart]);
+
+    return (
+        // 参考：
+        // 1）https://echarts.apache.org/examples/zh/editor.html
+        <div id="MyD3_6">
+        </div>
+    )
+}
 
 // MyD3_5：x、y轴 + 折线图
 export function MyD3_5() {
