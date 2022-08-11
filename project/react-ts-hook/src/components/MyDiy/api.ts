@@ -1,7 +1,3 @@
-export interface IData {
-    service: IService;
-}
-
 export interface IService {
     id: string;
     name: string;
@@ -9,44 +5,38 @@ export interface IService {
     children: IService[];
 }
 
-export const fetchData = new Promise((res, rej) => {
+export const fetchData = new Promise<{result: IService}>((res, rej) => {
     setTimeout(() => {
-        const data: IData = {
-            service: {
-                id: 'service-1',
-                name: '服务1',
-                enable: true,
-                children: [
-                    {
-                        id: 'service-2',
-                        name: '服务2',
-                        enable: true,
-                        children: [
-                            {
-                                id: 'service-1',
-                                name: '服务1',
-                                enable: true,
-                                children: [{
-                                    id: 'service-4',
-                                    name: '服务4',
-                                    enable: true,
-                                    children: []
-                                }],
-                            }
-                        ]
-                    },
-                    {
-                        id: 'service-3',
-                        name: '服务2',
-                        enable: false,
-                        children: []
-                    },
-                ]
-            }
+        const result: IService = {
+            id: 'service-1',
+            name: '服务1',
+            enable: true,
+            children: [
+                {
+                    id: 'service-2',
+                    name: '服务2',
+                    enable: true,
+                    children: [
+                        {
+                            id: 'service-4',
+                            name: '服务4',
+                            enable: true,
+                            children: [],
+                        }
+                    ]
+                },
+                {
+                    id: 'service-3',
+                    name: '服务3',
+                    enable: false,
+                    children: []
+                },
+            ]
+
         };
 
         res({
-            data
+            result
         })
     }, 1 * 1000);
 });
