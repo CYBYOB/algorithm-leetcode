@@ -16,6 +16,7 @@ interface IServiceNode {
 
 // MyDiy_1：手撕静态拓扑图（多维度下的网格开关。递归 + 层序遍历算法，实现节点、连线的绘制）。
 export function MyDiy_1() {
+    // 递归处理
     const getLinksByResult = useCallback((result: IService) => {
         const { id, children } = result;
         let resLinkList: any[] = [];
@@ -33,12 +34,12 @@ export function MyDiy_1() {
                         curveness: 0.2
                     }
                 }
-            )
+            );
         });
 
         children.forEach((v) => {
             resLinkList.push(...getLinksByResult(v))
-        })
+        });
 
         return resLinkList;
     }, []);
