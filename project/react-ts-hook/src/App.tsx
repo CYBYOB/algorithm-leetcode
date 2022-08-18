@@ -4,7 +4,7 @@ import ServiceTopology from './components/ServiceTopology';
 import {MyD3_1, MyD3_2, MyD3_3, MyD3_4, MyD3_5, MyD3_6} from './components/MyD3';
 import {MyG6_1, MyG6_2} from './components/MyG6';
 import {MyEcharts_1} from './components/MyEcharts';
-import {MyDiy_1} from './components/MyDiy';
+import {MyDiy_1, MyDiy_2} from './components/MyDiy';
 
 export default function App() {
     return (
@@ -12,6 +12,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={ServiceTopology()}></Route>
                 <Route path="/MyDiy_1" element={<MyDiy_1 />}></Route>
+                <Route path="/MyDiy_2" element={<MyDiy_2 />}></Route>
                 <Route path="/MyEcharts_1" element={<MyEcharts_1 />}></Route>
                 <Route path="/MyD3_1" element={<MyD3_1 />}></Route>
                 <Route path="/MyD3_2" element={<MyD3_2 />}></Route>

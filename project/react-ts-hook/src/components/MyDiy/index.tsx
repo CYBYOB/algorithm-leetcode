@@ -1,5 +1,14 @@
 import * as echarts from 'echarts';
-import { useCallback, useEffect } from "react";
+import {
+    // 公共的 option 类型
+    EChartsOption,
+} from 'echarts/types/dist/shared';
+import {
+    // 折线/面积图
+    LineSeriesOption,
+} from 'echarts/charts';
+import ReactECharts from 'echarts-for-react';
+import { useCallback, useEffect, useMemo } from "react";
 import { fetchData, IService } from "./api";
 import './index.less';
 
@@ -144,4 +153,31 @@ export function MyDiy_1() {
             <div id="MyDiy_1"></div>
         </>
     )
+}
+
+// MyDiy_2：ReactECharts（简单入门示例）。
+export function MyDiy_0() {
+    const getOption = useMemo(() => {
+        const option: EChartsOption = {
+            title: {
+                text: 'ECharts 入门示例',
+            },
+            tooltip: { show: true },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            },
+            yAxis: {},
+            series: [
+                {
+                    name: '销量',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20],
+                },
+            ]
+        };
+
+        return option;
+    }, []);
+
+    return <ReactECharts option={getOption} />
 }
