@@ -2,6 +2,7 @@ export interface IService {
     id: string;
     name: string;
     enable: boolean;
+    scopeEnable?: boolean;
     children: IService[];
 }
 
@@ -15,12 +16,14 @@ export const fetchData = new Promise<{result: IService}>((res, rej) => {
                 {
                     id: 'service-2',
                     name: '服务2',
-                    enable: true,
+                    enable: false,
+                    scopeEnable: true,
                     children: [
                         {
                             id: 'service-4',
                             name: '服务4',
                             enable: true,
+                            scopeEnable: true,
                             children: [],
                         }
                     ]
@@ -29,6 +32,7 @@ export const fetchData = new Promise<{result: IService}>((res, rej) => {
                     id: 'service-3',
                     name: '服务3',
                     enable: false,
+                    scopeEnable: false,
                     children: []
                 },
             ]

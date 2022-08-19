@@ -12,6 +12,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchData, IService } from "./api";
 import './index.less';
 
+const enableColor = 'green';
+const disableColor = 'gray';
+
 interface IServiceData extends IServiceNode {
     x: number;
     y: number;
@@ -21,9 +24,10 @@ interface IServiceNode {
     id: string;
     name: string;
     enable: boolean;
+    itemStyle?: Object;
 };
 
-// MyDiy_2：（ReactECharts）手撕静态拓扑图（多维度下的网格开关。递归 + 层序遍历算法，实现节点、连线的绘制）。
+// MyDiy_2：（ReactECharts 带交互）（多维度下的网格开关等）。
 export function MyDiy_2() {
     const [result, setResult] = useState<IService>();
     useEffect(() => {
@@ -35,6 +39,7 @@ export function MyDiy_2() {
 
     // 层序遍历
     const data = useMemo(() => {
+        debugger
         // 边界
         if (!result) {
             return [];
@@ -45,13 +50,20 @@ export function MyDiy_2() {
             curLevel = 0,
             resList: IServiceNode[][] = [];
 
-
         while (queue_1.length) {
             const { id, name, enable, children } = queue_1.shift() as IService;
             if (!resList[curLevel]) {
                 resList[curLevel] = [];
             }
-            resList[curLevel].push({ id, name, enable });
+            resList[curLevel].push(
+                {
+                    id,
+                    name,
+                    enable,
+                    itemStyle: {
+                        color: enable ? enableColor : disableColor
+                    },
+                });
 
             if (children.length) {
                 queue_2.push(...children);
@@ -68,14 +80,15 @@ export function MyDiy_2() {
         resList.map((serviceNodeList: IServiceNode[], serviceNodeListIndex) => {
             const serviceNodeListLength = serviceNodeList.length;
             return serviceNodeList.map((serviceNodeItem, serviceNodeItemIndex) => {
-                const { id, name, enable } = serviceNodeItem;
+                const { id, name, enable, itemStyle } = serviceNodeItem;
                 resData.push(
                     {
                         id,
                         name,
                         enable,
                         x: 300 + serviceNodeListIndex * 50,
-                        y: 500 + (serviceNodeItemIndex - (serviceNodeListLength - 1) / 2) * 50
+                        y: 500 + (serviceNodeItemIndex - (serviceNodeListLength - 1) / 2) * 50,
+                        itemStyle
                     }
                 );
             });
@@ -83,25 +96,27 @@ export function MyDiy_2() {
 
         return resData;
     }, [result]);
-    
+
     // 递归处理
     const getLinksByResult = useCallback((result?: IService) => {
         if (!result) {
             return [];
         }
 
-        const { id, children } = result;
+        const { id: sourceId, enable: serviceEnable, children } = result;
         let resLinkList: any[] = [];
         children.forEach((v) => {
+            const {id: targetId, scopeEnable} = v;
             resLinkList.push(
                 {
-                    source: id,
-                    target: v.id,
+                    source: sourceId,
+                    target: targetId,
                     symbolSize: [5, 20],
                     label: {
                         show: false
                     },
                     lineStyle: {
+                        color: (serviceEnable && scopeEnable) ? enableColor : disableColor,
                         width: 5,
                         curveness: 0.2
                     }
@@ -117,6 +132,7 @@ export function MyDiy_2() {
     }, []);
 
     const links = useMemo(() => {
+        debugger
         return getLinksByResult(result);
     }, [getLinksByResult, result]);
 
@@ -153,14 +169,55 @@ export function MyDiy_2() {
         };
     }, [data, links]);
 
+    const findClickService = useCallback((serviceId: string, curResult: IService | undefined): IService | undefined => {
+        // 
+        if (!curResult) {
+            return undefined;
+        }
+
+        const {id, children} = curResult,
+            childrenLength = children.length;
+        if (id === serviceId) {
+            return curResult;
+        }
+
+        // 
+        for (let i = 0; i < childrenLength; i++) {
+            const targetService = findClickService(serviceId, children[i]);
+            if (targetService) {
+                return targetService;
+            }
+        }
+    }, []);
+    const getNewResultByOperation = useCallback((dataType, data): IService | undefined => {
+        if (dataType === 'node') {
+            const {id: serviceId, itemStyle: {color}} = data,
+                targetService = findClickService(serviceId, result);
+            
+            if (!targetService) {
+                return result;
+            }
+            
+            // 更新服务、服务链路的状态
+            const newEnable = !targetService.enable;
+            targetService.enable = newEnable;
+            targetService.children.map(v => v.scopeEnable = newEnable);
+            return result;
+        }
+        return undefined;
+    }, [findClickService, result]);
+
     const onEvents = useMemo(() => {
         return {
             'click': (e: any) => {
-                debugger
-                console.log(e)
+                const {dataType, data} = e,
+                    result = getNewResultByOperation(dataType, data);
+                // TODO：优化写法，不要2次 setResult 。
+                setResult(undefined);
+                setResult(result);
             },
         };
-    }, []);
+    }, [getNewResultByOperation]);
 
     return <ReactECharts onEvents={onEvents} option={option} />
 }
