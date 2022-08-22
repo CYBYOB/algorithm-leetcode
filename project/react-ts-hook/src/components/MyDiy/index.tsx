@@ -10,6 +10,7 @@ import {
 import ReactECharts from 'echarts-for-react';
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { fetchData, IService } from "./api";
+import _ from 'lodash';
 import './index.less';
 
 const enableColor = 'green';
@@ -39,7 +40,6 @@ export function MyDiy_2() {
 
     // 层序遍历
     const data = useMemo(() => {
-        debugger
         // 边界
         if (!result) {
             return [];
@@ -132,7 +132,6 @@ export function MyDiy_2() {
     }, []);
 
     const links = useMemo(() => {
-        debugger
         return getLinksByResult(result);
     }, [getLinksByResult, result]);
 
@@ -190,9 +189,11 @@ export function MyDiy_2() {
         }
     }, []);
     const getNewResultByOperation = useCallback((dataType, data): IService | undefined => {
+        const newResult = _.cloneDeep(result);
+
         if (dataType === 'node') {
-            const {id: serviceId, itemStyle: {color}} = data,
-                targetService = findClickService(serviceId, result);
+            const {id: serviceId} = data,
+                targetService = findClickService(serviceId, newResult);
             
             if (!targetService) {
                 return result;
@@ -201,10 +202,21 @@ export function MyDiy_2() {
             // 更新服务、服务链路的状态
             const newEnable = !targetService.enable;
             targetService.enable = newEnable;
-            targetService.children.map(v => v.scopeEnable = newEnable);
-            return result;
         }
-        return undefined;
+        else {
+            const {source: consumerId, target: providerId, lineStyle: {color}} = data,
+                consumerService = findClickService(consumerId, newResult),
+                children = consumerService?.children ?? [],
+                childrenLength = children?.length ?? 0,
+                newEnable = !(color === enableColor);
+            
+            for (let i = 0 ; i < childrenLength; i++) {
+                if (children[i].id === providerId) {
+                    children[i].scopeEnable = newEnable;
+                }
+            }
+        }
+        return newResult;
     }, [findClickService, result]);
 
     const onEvents = useMemo(() => {
@@ -212,8 +224,7 @@ export function MyDiy_2() {
             'click': (e: any) => {
                 const {dataType, data} = e,
                     result = getNewResultByOperation(dataType, data);
-                // TODO：优化写法，不要2次 setResult 。
-                setResult(undefined);
+                // TODO：似乎不是局部更新（可能会存在性能问题）
                 setResult(result);
             },
         };

@@ -4,8 +4,6 @@ import { useEffect } from "react";
 export default function ServiceTopology() {
     useEffect(() => {
         axios.get('http://yapi.smart-xwork.cn/mock/149873/service/:serviceId/topology').then(res => {
-            // const {data} = res
-            // debugger
             res.data = [
                 {
                     
