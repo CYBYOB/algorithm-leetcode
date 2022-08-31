@@ -240,7 +240,7 @@ export function MyDiy_4() {
     return <ReactECharts style={{height: '1200px'}} onEvents={onEvents} option={option} />
 }
 
-// 【TODO】MyDiy_3：（ReactECharts 带前、后端的交互）（多维度下的网格开关等）。
+// 【TODO】MyDiy_3：（ ReactECharts 带前、后端的交互）（多维度下的网格开关等）。
 export function MyDiy_3() {
     const [result, setResult] = useState<IService>();
     useEffect(() => {
