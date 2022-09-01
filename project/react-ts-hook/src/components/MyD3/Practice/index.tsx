@@ -2,6 +2,26 @@ import * as d3 from 'd3';
 import { useCallback, useEffect } from "react"
 import './index.less';
 
+// P_4：append、insert、remove的入门
+export function P_4() {
+    const draw = useCallback(() => {
+        const el = d3.select('#P_4');
+        el.append('p').attr('id', 'p_1').text('我是新增的p标签');
+        el.append('p').attr('id', 'p_2').text('我是新增、但即将删掉的p标签');
+        el.insert('p', '#p_1').attr('id', 'p_0').text('将要插在id为p_1最前面的p标签');
+        el.select('#p_2').remove();
+    }, []);
+
+    useEffect(() => {
+        draw();
+    }, [draw]);
+
+    return (
+        <div id="P_4">
+        </div>
+    )
+}
+
 // P_3：attr、classed、style、property、text、html 等函数的简单入门
 export function P_3() {
     const draw = useCallback(() => {
