@@ -1,6 +1,62 @@
 import * as d3 from 'd3';
-import { useCallback, useEffect } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import './index.less';
+
+// P_5：.datum([value])、.data([values])的入门
+export function P_5() {
+    const draw = useCallback(() => {
+        const el = d3.select('#P_5'),
+            pList = el.selectAll('p');
+        // datum的使用
+        pList.datum('cyb')
+            // .text(function(d, i) {return `${d}-${i}`});
+            .text((d, i) => `${d}-${i}`);
+        
+        // data的使用
+        const data = [
+            {id: 3, name: '张三'},
+            {id: 4, name: '李四'},
+            {id: 5, name: '王五'},
+        ]
+        pList.data(data, (d: any) => d.id)
+            .text((d) => `id：${d.id}，name：${d.name}`);
+    }, []);
+
+    const codeStr = useMemo(() => {
+        return `
+        // datum的源码
+        d3_selectionPrototype.datum = function (value) {
+            return arguments.length
+                ? this.property('__data__', value)
+                : this. property('__data__');
+        };
+
+        // data的源码（暂无）
+        update：数组长度 = 元素数量。
+        enter：数组长度 > 元素数量。
+        exit：数组长度 < 元素数量。
+        
+        // 注：在被绑定数据的选择集中添加元素后，新（被添加的）元素会继承该数据
+        `;
+    }, []);
+
+    useEffect(() => {
+        draw();
+    }, [draw]);
+
+    return (
+        <div id="P_5">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+
+            <pre>
+                {/* datum源码 */}
+                {codeStr}
+            </pre>
+        </div>
+    )
+}
 
 // P_4：append、insert、remove的入门
 export function P_4() {
