@@ -2,6 +2,69 @@ import * as d3 from 'd3';
 import { useCallback, useEffect, useMemo } from "react"
 import './index.less';
 
+// P_7：不同数据与元素下的处理模板。
+// 注：其实，不用过度关系数据与元素间的数量关系，
+export function P_7() {
+    const draw = useCallback(() => {
+        const el = d3.select('#P_7'),
+            pList = el.selectAll('p');
+        const data = [1, 2, 3];
+
+        // 绑定数据后，分别获取 update 和 enter 部分
+        const update = pList.data(data),
+            enter = update.enter();
+        
+        // 展示的是 1
+        // update.text((d) => d);
+
+        // 展示的是 开始的p\n 2\n 3
+        // enter.append('p').text((d) => d);
+
+        // 若一开始没有 【开始的p】 这个元素，那么展示的是 1\n 2\n 3
+        enter.append('p').text((d) => d);
+
+
+        // 展示 remove 效果
+        const el_1 = d3.select('#P_7_1'),
+            pList_1 = el.selectAll('p');
+        const data_1 = [1, 2, 3,4,5];
+
+        // 绑定数据后，分别获取 update 和 enter 部分
+        const update_1 = pList_1.data(data_1),
+            exit = update_1.exit();
+        
+        // 展示的是 1
+        update.text((d) => d);
+        exit.remove();
+
+        // 展示的是 开始的p\n 2\n 3
+        // enter.append('p').text((d) => d);
+
+        // 若一开始没有 【开始的p】 这个元素，那么展示的是 1\n 2\n 3
+        // enter.append('p').text((d) => d);
+    }, []);
+
+    useEffect(() => {
+        draw();
+    }, [draw]);
+
+    return (
+        <>
+            <div id="P_7">
+                <p>开始的p</p>
+            </div>
+
+            <div id="P_7_1">
+                <p>开始的p</p>
+                <p>开始的p</p>
+                <p>开始的p</p>
+                <p>开始的p</p>
+                <p>开始的p</p>
+            </div>
+        </>
+    )
+}
+
 // P_6：【TODO 似乎API有改动，效果对不上，需看源码】update、enter、exit的入门
 export function P_6() {
     const draw = useCallback(() => {

@@ -40,7 +40,7 @@ export function MyDiy_4() {
         })
     }, []);
 
-    // 层序遍历
+    // 层序遍历，计算每个服务的坐标位置 + 样式（开启或关闭网格开关）的设置
     const data = useMemo(() => {
         // 边界
         if (!result) {
@@ -81,7 +81,7 @@ export function MyDiy_4() {
         let resData: IServiceData[] = [];
         resList.map((serviceNodeList: IServiceNode[], serviceNodeListIndex) => {
             const serviceNodeListLength = serviceNodeList.length;
-            // debugger
+            
             return serviceNodeList.map((serviceNodeItem, serviceNodeItemIndex) => {
                 const { id, name, enable, itemStyle } = serviceNodeItem;
                 resData.push(
@@ -92,7 +92,6 @@ export function MyDiy_4() {
                         x: 0 + serviceNodeListIndex * 600,
                         y: 0 + (serviceNodeItemIndex - (serviceNodeListLength - 1) / 2) * 50,
                         itemStyle,
-                        // symbolSize: [40, 40]
                     }
                 );
             });
@@ -101,13 +100,13 @@ export function MyDiy_4() {
         return resData;
     }, [result]);
 
-    // 递归处理
+    // 递归处理，存储链路 + 样式（当前服务链路的网格开关状态）的设置
     const getLinksByResult = useCallback((result?: IService) => {
         if (!result) {
             return [];
         }
 
-        const { id: sourceId, enable: serviceEnable, children } = result;
+        const {id: sourceId, enable: serviceEnable, children} = result;
         let resLinkList: any[] = [];
         children.forEach((v) => {
             const {id: targetId, scopeEnable} = v;
@@ -196,6 +195,7 @@ export function MyDiy_4() {
     const getNewResultByOperation = useCallback((dataType, data): IService | undefined => {
         const newResult = _.cloneDeep(result);
 
+        // 服务的交互
         if (dataType === 'node') {
             const {id: serviceId} = data,
                 targetService = findClickService(serviceId, newResult);
@@ -208,6 +208,7 @@ export function MyDiy_4() {
             const newEnable = !targetService.enable;
             targetService.enable = newEnable;
         }
+        // 服务链路的交互
         else {
             const {source: consumerId, target: providerId, lineStyle: {color}} = data,
                 consumerService = findClickService(consumerId, newResult),
@@ -221,17 +222,16 @@ export function MyDiy_4() {
                 }
             }
         }
-        debugger
+        
         return newResult;
     }, [findClickService, result]);
 
     const onEvents = useMemo(() => {
         return {
             'click': (e: any) => {
-                debugger
                 const {dataType, data} = e,
                     result = getNewResultByOperation(dataType, data);
-                // TODO：似乎不是局部更新（可能会存在性能问题）
+                // TODO：非局部更新（存在性能问题）
                 setResult(result);
             },
         };

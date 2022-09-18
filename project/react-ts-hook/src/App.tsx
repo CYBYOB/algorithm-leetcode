@@ -5,7 +5,7 @@ import {MyD3_1, MyD3_2, MyD3_3, MyD3_4, MyD3_5, MyD3_6} from './components/MyD3'
 import {MyG6_1, MyG6_2} from './components/MyG6';
 import {MyEcharts_1} from './components/MyEcharts';
 import {MyDiy_1, MyDiy_2, MyDiy_3, MyDiy_4} from './components/MyDiy';
-import { P_1, P_2, P_3, P_4, P_5, P_6 } from './components/MyD3/Practice';
+import { P_1, P_2, P_3, P_4, P_5, P_6, P_7 } from './components/MyD3/Practice';
 
 export default function App() {
     return (
@@ -17,6 +17,7 @@ export default function App() {
                 <Route path="/MyDiy_3" element={<MyDiy_3 />}></Route>
                 <Route path="/MyDiy_4" element={<MyDiy_4 />}></Route>
                 <Route path="/MyEcharts_1" element={<MyEcharts_1 />}></Route>
+                <Route path="/P_7" element={<P_7 />}></Route>
                 <Route path="/P_6" element={<P_6 />}></Route>
                 <Route path="/P_5" element={<P_5 />}></Route>
                 <Route path="/P_4" element={<P_4 />}></Route>

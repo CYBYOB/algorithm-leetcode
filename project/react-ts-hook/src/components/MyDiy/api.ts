@@ -108,7 +108,6 @@ export const fetchData = new Promise<{result: IService}>((res, rej) => {
                     children: []
                 },
             ]
-
         };
 
         res({
