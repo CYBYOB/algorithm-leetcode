@@ -11,8 +11,8 @@ from docx import Document
 
 
 # 配置
-file_name = '早安'
-tag = '早安'
+file_name = '晚安'
+tag = '晚安'
 copyCount = 0
 author = '网络'
 
@@ -28,7 +28,7 @@ with open(writeFilePath, 'a+', newline='')as cleanFile:
         lines = f.readlines()
 
     whole_content = ''.join(lines)
-    reg = re.compile(r"\d\.(.*?)\n\d\.", re.S)
+    reg = re.compile(r"\d+\.(.*?)\n\d+\.", re.S)
     lines = reg.findall(whole_content)
 
     # 遍历 value_list，录入 csv
